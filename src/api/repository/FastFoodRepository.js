@@ -11,6 +11,19 @@ class FastFoodRepository {
     async listAllProducts(product){
         return await product.findAll()
     }
+
+    async updateProduct(product, body){
+        await product.update(
+        { 
+            name: body.name,
+            price: body.price
+        }, 
+        {
+            where: {
+              id: body.id
+            }
+        });
+    }
 }
 
 module.exports = FastFoodRepository
